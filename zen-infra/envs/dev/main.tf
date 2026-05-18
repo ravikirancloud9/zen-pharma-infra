@@ -1,8 +1,9 @@
 
+data "aws_caller_identity" "current" {}
+
 module "zen_bucket" {
   source = "../../modules/aws_bucket"
   bucket_name = "zen-pharma-dev-bucket"
-  
 }
 
 module "vpc" {
