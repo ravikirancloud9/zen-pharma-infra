@@ -42,23 +42,23 @@ module "eks" {
 #   db_password           = var.db_password
 # }
 
-# module "ecr" {
-#   source = "../../modules/aws_ecr"
+module "ecr" {
+  source = "../../modules/aws_ecr"
 
-#   project = "pharma"
-#   env     = "dev"
-#   repositories = [
-#     "api-gateway",
-#     "auth-service",
-#     "drug-catalog-service",
-#     "inventory-service",
-#     "manufacturing-service",
-#     "notification-service",
-#     "pharma-ui",
-#     "supplier-service",
-#     "qc-service"
-#   ]
-# }
+  project = "pharma"
+  env     = "dev"
+  repositories = [
+    "api-gateway",
+    "auth-service",
+    "drug-catalog-service",
+    "inventory-service",
+    "manufacturing-service",
+    "notification-service",
+    "pharma-ui",
+    "supplier-service",
+    "qc-service"
+  ]
+}
 
 # module "iam" {
 #   source = "../../modules/aws_iam"
