@@ -4,12 +4,12 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "db_paa" {
+variable "DEV_DB_PASSWORD" {
   description = "Database password (set in Terraform Cloud workspace variables or as TF_VAR_db_paa)"
   type        = string
 }
 
-variable "jwt" {
+variable "DEV_JWT_SECRET" {
   description = "JWT secret (set in Terraform Cloud workspace variables or as TF_VAR_jwt)"
   type        = string
 }
