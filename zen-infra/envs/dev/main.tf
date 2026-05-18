@@ -29,18 +29,18 @@ module "eks" {
   max_size           = 4
 }
 
-# module "rds" {
-#   source = "../../modules/aws_rds"
+module "rds" {
+  source = "../../modules/aws_rds"
 
-#   project               = "pharma"
-#   env                   = "dev"
-#   subnet_ids            = module.vpc.private_rds_subnet_ids
-#   vpc_id                = module.vpc.vpc_id
-#   eks_security_group_id = module.eks.cluster_security_group_id
-#   db_name               = "pharmadb"
-#   db_username           = "pharmaadmin"
-#   db_password           = var.db_password
-# }
+  project               = "pharma"
+  env                   = "dev"
+  subnet_ids            = module.vpc.private_rds_subnet_ids
+  vpc_id                = module.vpc.vpc_id
+  eks_security_group_id = module.eks.cluster_security_group_id
+  db_name               = "pharmadb"
+  db_username           = "pharmaadmin"
+  db_password           = var.DEV_DB_PASSWORD
+}
 
 module "ecr" {
   source = "../../modules/aws_ecr"
