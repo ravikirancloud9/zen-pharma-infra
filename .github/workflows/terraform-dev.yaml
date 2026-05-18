@@ -39,8 +39,14 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Terraform Init
+        id: terraform_init
         run: terraform init
+      
+      - name: Terraform Validate
+        id: terraform_validate
+        run: terraform validate
 
       - name: Terraform Plan
+        id: terraform_plan
         run: terraform plan 
         
