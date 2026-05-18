@@ -12,6 +12,11 @@ permissions:
 jobs:
   zen-pharma-infra:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: zen-infra/envs/dev
+        
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
