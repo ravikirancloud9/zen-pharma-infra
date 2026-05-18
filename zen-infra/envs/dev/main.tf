@@ -28,3 +28,55 @@ module "eks" {
   min_size           = 1
   max_size           = 4
 }
+
+# module "rds" {
+#   source = "../../modules/aws_rds"
+
+#   project               = "pharma"
+#   env                   = "dev"
+#   subnet_ids            = module.vpc.private_rds_subnet_ids
+#   vpc_id                = module.vpc.vpc_id
+#   eks_security_group_id = module.eks.cluster_security_group_id
+#   db_name               = "pharmadb"
+#   db_username           = "pharmaadmin"
+#   db_password           = var.db_password
+# }
+
+# module "ecr" {
+#   source = "../../modules/aws_ecr"
+
+#   project = "pharma"
+#   env     = "dev"
+#   repositories = [
+#     "api-gateway",
+#     "auth-service",
+#     "drug-catalog-service",
+#     "inventory-service",
+#     "manufacturing-service",
+#     "notification-service",
+#     "pharma-ui",
+#     "supplier-service",
+#     "qc-service"
+#   ]
+# }
+
+# module "iam" {
+#   source = "../../modules/aws_iam"
+
+#   project           = "pharma"
+#   env               = "dev"
+#   oidc_provider_arn = module.eks.oidc_provider_arn
+#   oidc_provider_url = module.eks.oidc_provider_url
+#   aws_account_id    = data.aws_caller_identity.current.account_id
+#   github_org        = var.github_org
+# }
+
+module "secrets_manager" {
+  source = "../../modules/aws_secrets_manager"
+
+  project     = "pharma"
+  env         = "dev"
+  db_username = "pharmaadmin"
+  db_password = var.TF_VAR_DEV_DB_PASSWORD
+  jwt_secret  = var.TF_VAR_DEV_JWT_SECRET
+}
