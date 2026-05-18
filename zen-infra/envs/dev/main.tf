@@ -60,16 +60,16 @@ module "ecr" {
   ]
 }
 
-# module "iam" {
-#   source = "../../modules/aws_iam"
+module "iam" {
+  source = "../../modules/aws_iam"
 
-#   project           = "pharma"
-#   env               = "dev"
-#   oidc_provider_arn = module.eks.oidc_provider_arn
-#   oidc_provider_url = module.eks.oidc_provider_url
-#   aws_account_id    = data.aws_caller_identity.current.account_id
-#   github_org        = var.github_org
-# }
+  project           = "pharma"
+  env               = "dev"
+  oidc_provider_arn = module.eks.oidc_provider_arn
+  oidc_provider_url = module.eks.oidc_provider_url
+  aws_account_id    = data.aws_caller_identity.current.account_id
+  github_org        = var.github_org
+}
 
 module "secrets_manager" {
   source = "../../modules/aws_secrets_manager"
