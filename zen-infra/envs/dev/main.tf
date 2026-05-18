@@ -6,7 +6,7 @@ module "zen_bucket" {
 }
 
 module "vpc" {
-  source = "../../modules/vpc"
+  source = "../../modules/aws_vpc"
 
   project                  = "pharma"
   environment              = "dev"
