@@ -25,13 +25,14 @@ module "eks" {
   cluster_version    = "1.33"
   subnet_ids         = module.vpc.private_eks_subnet_ids
   node_instance_type = "t3.small"
-  desired_capacity   = 2
+  desired_capacity   = 3
   min_size           = 1
   max_size           = 4
 }
 
 module "rds" {
   source = "../../modules/aws_rds"
+  depends_on = [module.vpc, module.eks]
 
   project               = "pharma"
   env                   = "dev"
@@ -63,6 +64,7 @@ module "ecr" {
 
 module "iam" {
   source = "../../modules/aws_iam"
+  depends_on = [module.eks]
 
   project           = "pharma"
   env               = "dev"
