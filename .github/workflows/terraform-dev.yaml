@@ -15,8 +15,10 @@ jobs:
     environment: dev
     env:
       AWS_REGION: us-east-1
+      TF_IN_AUTOMATION: "true"
       TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
       TF_CLOUD_TOKEN: ${{ secrets.TF_API_TOKEN }}
+      TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
 
     defaults:
       run:
