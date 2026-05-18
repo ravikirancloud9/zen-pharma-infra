@@ -1,0 +1,13 @@
+name: dev-zen-pharma-infra
+
+on:
+  push:
+    branches:
+      - dev
+    paths:
+      - 'terraform/**'
+  pull_request:
+    branches:
+      - dev
+    paths:
+      - 'terraform/**'
