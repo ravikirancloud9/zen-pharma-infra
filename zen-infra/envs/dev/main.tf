@@ -77,6 +77,6 @@ module "secrets_manager" {
   project     = "pharma"
   env         = "dev"
   db_username = "pharmaadmin"
-  db_password = var.DEV_DB_PASSWORD
-  jwt_secret  = var.DEV_JWT_SECRET
+  db_password = var.TF_VAR_DEV_DB_PASSWORD
+  jwt_secret  = var.TF_VAR_DEV_JWT_SECRET
 }
